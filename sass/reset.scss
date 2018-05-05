@@ -6,17 +6,17 @@ li { list-style: none;}
 q { quotes: none;}
 a, input { -webkit-tap-highlight-color: transparent; }
 .debug { display:none; position: absolute; top: 0; left: 0; z-index: 9999; max-width: 100%; background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; line-height: 1.4em; padding: 0.5em; pointer-events: all; -webkit-user-select:all; user-select: all; }
-.app { position: relative; width: 100%; height: 100%; margin: 0 auto; overflow: hidden; background-color: #ffd400;}
+.app { position: relative; width: 100%; height: 100%; margin: 0 auto; overflow: hidden; background-color: #038ff1;}
 .app>* { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;}
 .app>*>* { position: absolute; top: 0; left: 0; width: 100%;}
 
 
 /***** start load *****/
-.load { -webkit-animation: fadeIn 0.2s 0.1s linear both; }
-.load center { position: absolute; left: 0%; top: 50%; width: 100%; margin-top: -35%; }
-.load figure { -webkit-animation: ani-load2 1s both ease-in-out infinite; width: 50%; padding-bottom: 50%; margin: 0 auto; background-image: url(../img/load1.png);}
-.load h6 { -webkit-animation: ani-load2 1s both ease-in-out infinite; font-size: 1.15em; font-weight: bold; margin-top: -8%; padding-left: 1.5em; }
-.load h6 q {display: inline-block; vertical-align: middle; width: 1.5em; text-align: left; margin-left: 0.1em;}
+.load { -webkit-animation: fadeIn 0.2s 0.1s linear both; background: url('../img/loading-bg.png') center bottom no-repeat; background-size: 100% auto;}
+.load center { position: absolute; left: 0%; top: 10%; width: 100%; }
+.load figure { width: 40%; padding-bottom: 50%; margin: 0 auto; background-image: url(../img/load1.png);}
+.load h6 { font-size: 1.5em; font-weight: 200; word-spacing: -2px; margin-top: 8%; padding-left: 1.5em; color: #fff;}
+.load h6 q {display: inline-block; vertical-align: middle; width: 1.5em; text-align: left; margin-left: 0.1em; margin-top: 1.3em; color: #fff;}
 .load h6 q span { -webkit-animation: ani-load1 0.8s linear infinite both; display: inline-block; white-space: nowrap; overflow: hidden; }
 @-webkit-keyframes ani-load1{
     0%{ width: 0;}

@@ -55,7 +55,7 @@ a, input {
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
-  background-color: #ffd400; }
+  background-color: #038ff1; }
 
 .app > * {
   display: none;
@@ -74,34 +74,38 @@ a, input {
 
 /***** start load *****/
 .load {
-  -webkit-animation: fadeIn 0.2s 0.1s linear both; }
+  -webkit-animation: fadeIn 0.2s 0.1s linear both;
+  background: url("../img/loading-bg.png") center bottom no-repeat;
+  background-size: 100% auto; }
 
 .load center {
   position: absolute;
   left: 0%;
-  top: 50%;
-  width: 100%;
-  margin-top: -35%; }
+  top: 10%;
+  width: 100%; }
 
 .load figure {
-  -webkit-animation: ani-load2 1s both ease-in-out infinite;
-  width: 50%;
+  width: 40%;
   padding-bottom: 50%;
   margin: 0 auto;
   background-image: url(../img/load1.png); }
 
 .load h6 {
-  font-size: 1.15em;
-  font-weight: bold;
-  margin-top: -8%;
-  padding-left: 1.5em; }
+  font-size: 1.5em;
+  font-weight: 200;
+  word-spacing: -2px;
+  margin-top: 8%;
+  padding-left: 1.5em;
+  color: #fff; }
 
 .load h6 q {
   display: inline-block;
   vertical-align: middle;
   width: 1.5em;
   text-align: left;
-  margin-left: 0.1em; }
+  margin-left: 0.1em;
+  margin-top: 1.3em;
+  color: #fff; }
 
 .load h6 q span {
   -webkit-animation: ani-load1 0.8s linear infinite both;
@@ -498,23 +502,22 @@ a, input {
   background-position-y: 90%; }
 
 /*section*/
-.s1 h2 {
-  top: 3%;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap; }
+.s1 {
+  background-image: url("../img/s1-bg-top.png"), url("../img/s1-bg-bottom.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center bottom;
+  background-size: 100% auto; }
 
 .s1 h2 i {
   display: block;
-  width: 31%;
+  width: 26em;
   padding-bottom: 31%;
-  margin: 0 auto 8%;
-  background-image: url(../img/logo.png); }
+  margin: 2em auto 8%;
+  background-image: url(../img/s1-title.png); }
 
 .s1 center {
   top: 50%;
-  margin-top: -20%; }
+  margin-top: -30%; }
 
 .s1 center h3 a {
   display: inline-block;
@@ -533,7 +536,9 @@ a, input {
 
 .s1 center p {
   margin-top: 1.5%;
-  font-weight: bold; }
+  font-weight: normal;
+  color: #bfe5ff;
+  font-size: 1.2em; }
 
 .s1 center h4 {
   margin-top: 6%; }
@@ -541,15 +546,33 @@ a, input {
 .s1 center h4 a {
   display: inline-block;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: normal;
   line-height: 1em;
   padding: 0.4em 1.4em;
   border-radius: 2em;
-  background: #fff;
-  border: solid #222 0.15em; }
+  background: #0878c6;
+  border: solid #fff 0.15em;
+  color: #fff; }
 
 .s1 center h4 a:active {
   background-color: #bbe9fe; }
+
+.s1 .lottery-access {
+  top: 80%;
+  text-align: center; }
+  .s1 .lottery-access i {
+    display: inline-block;
+    width: 3.875em;
+    height: 3.625em;
+    background: url("../img/gift.png") no-repeat center center;
+    background-size: 100% auto; }
+  .s1 .lottery-access p {
+    text-align: center;
+    color: #fff;
+    font-size: 1.42em;
+    text-decoration: underline;
+    margin-top: .6em;
+    line-height: 1; }
 
 .s2 h3 {
   left: auto;
@@ -987,5 +1010,89 @@ a, input {
 .share center {
   height: 100%;
   background-image: url(../img/share.png); }
+
+.lottery {
+  background-image: url("../img/lottery-bg-top.png"), url("../img/lottery-bg-bottom.png"), url("../img/lottery-bg.jpg");
+  background-position: top left, bottom left, center center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 100% auto; }
+  .lottery .lottery-title {
+    padding-top: 2.64em;
+    padding-bottom: 0.8em;
+    text-align: center; }
+    .lottery .lottery-title .lottery-title-dark {
+      color: #d8ff00; }
+    .lottery .lottery-title i {
+      display: inline-block;
+      width: 16.32em;
+      height: 3.47em;
+      background: url("../img/lottery-title.png") no-repeat center center;
+      background-size: 100% 100%;
+      margin-bottom: 1.07em; }
+    .lottery .lottery-title p {
+      display: inline-block;
+      font-size: 1.07em;
+      font-weight: normal;
+      line-height: 1;
+      color: #fff;
+      border-radius: 15em;
+      background-color: #1b84cd;
+      padding: 0.714em 2.5em;
+      margin-bottom: 0.8em; }
+    .lottery .lottery-title small {
+      display: block;
+      color: #fff;
+      font-size: 0.9em;
+      text-align: center; }
+  .lottery .lottery-buttons {
+    text-align: center; }
+    .lottery .lottery-buttons a {
+      display: inline-block;
+      border: 1px solid #fff;
+      border-radius: 15em;
+      background-color: #177ac3;
+      color: #fff;
+      font-size: 1.25em;
+      line-height: 1;
+      padding: 0.6em 1.7em; }
+      .lottery .lottery-buttons a.back-button {
+        position: relative;
+        padding-left: 2.4em;
+        margin-right: 1.7em; }
+        .lottery .lottery-buttons a.back-button i {
+          position: absolute;
+          top: .3em;
+          left: .5em;
+          display: inline-block;
+          width: 1.4em;
+          height: 1.41em;
+          background: url("../img/lottery-back.png") no-repeat center center;
+          background-size: 100% 100%; }
+  .lottery .lottery-plate {
+    width: 20.159em;
+    height: 23.601em;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative; }
+    .lottery .lottery-plate .rotate-bg {
+      width: 20.159em;
+      height: 20.231em;
+      background: url("../img/lottery-circle.png");
+      background-size: 100% 100%; }
+    .lottery .lottery-plate .lottery-star {
+      width: 4.975em;
+      height: 4.975em;
+      position: absolute;
+      top: 7.592em;
+      left: 7.628em;
+      outline: none; }
+      .lottery .lottery-plate .lottery-star img {
+        width: 4.975em;
+        height: 4.975em; }
+    .lottery .lottery-plate #lotteryBtn {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0; }
 
 /*# sourceMappingURL=style.css.map */
