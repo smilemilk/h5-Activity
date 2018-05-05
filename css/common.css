@@ -197,80 +197,68 @@
   background-repeat: no-repeat, no-repeat;
   background-position: center top, center bottom;
   background-size: 100% auto; }
+  .s1 h2 i {
+    display: block;
+    width: 26em;
+    padding-bottom: 31%;
+    margin: 2em auto 8%;
+    background-image: url(../img/s1-title.png); }
+  .s1 center {
+    top: 50%;
+    margin-top: -30%; }
+    .s1 center h3 a {
+      display: inline-block;
+      position: relative;
+      width: 31.25%;
+      padding-bottom: 31.25%;
+      margin: 0 4%;
+      background: url(../img/sex.png) no-repeat 0 0;
+      background-size: 200% auto; }
+      .s1 center h3 a + a {
+        background-position-y: 100%; }
+      .s1 center h3 a.curr {
+        background-position-x: 100%; }
+    .s1 center p {
+      margin-top: 1.5%;
+      font-weight: normal;
+      color: #bfe5ff;
+      font-size: 1.2em; }
+    .s1 center h4 {
+      margin-top: 6%; }
+      .s1 center h4 a {
+        display: inline-block;
+        font-size: 1.5em;
+        font-weight: normal;
+        line-height: 1em;
+        padding: 0.4em 1.4em;
+        border-radius: 2em;
+        background: #0878c6;
+        border: solid #fff 0.15em;
+        color: #fff; }
+        .s1 center h4 a:active {
+          background-color: #bbe9fe; }
+  .s1 .lottery-access {
+    top: 80%;
+    text-align: center; }
+    .s1 .lottery-access i {
+      display: inline-block;
+      width: 3.875em;
+      height: 3.625em;
+      background: url("../img/gift.png") no-repeat center center;
+      background-size: 100% auto; }
+    .s1 .lottery-access p {
+      text-align: center;
+      color: #fff;
+      font-size: 1.42em;
+      text-decoration: underline;
+      margin-top: .6em;
+      line-height: 1; }
 
-.s1 h2 i {
-  display: block;
-  width: 26em;
-  padding-bottom: 31%;
-  margin: 2em auto 8%;
-  background-image: url(../img/s1-title.png); }
-
-.s1 center {
-  top: 50%;
-  margin-top: -30%; }
-
-.s1 center h3 a {
-  display: inline-block;
-  position: relative;
-  width: 31.25%;
-  padding-bottom: 31.25%;
-  margin: 0 4%;
-  background: url(../img/sex.png) no-repeat 0 0;
-  background-size: 200% auto; }
-
-.s1 center h3 a + a {
-  background-position-y: 100%; }
-
-.s1 center h3 a.curr {
-  background-position-x: 100%; }
-
-.s1 center p {
-  margin-top: 1.5%;
-  font-weight: normal;
-  color: #bfe5ff;
-  font-size: 1.2em; }
-
-.s1 center h4 {
-  margin-top: 6%; }
-
-.s1 center h4 a {
-  display: inline-block;
-  font-size: 1.5em;
-  font-weight: normal;
-  line-height: 1em;
-  padding: 0.4em 1.4em;
-  border-radius: 2em;
-  background: #0878c6;
-  border: solid #fff 0.15em;
-  color: #fff; }
-
-.s1 center h4 a:active {
-  background-color: #bbe9fe; }
-
-.s1 .lottery-access {
-  top: 80%;
-  text-align: center; }
-  .s1 .lottery-access i {
-    display: inline-block;
-    width: 3.875em;
-    height: 3.625em;
-    background: url("../img/gift.png") no-repeat center center;
-    background-size: 100% auto; }
-  .s1 .lottery-access p {
-    text-align: center;
-    color: #fff;
-    font-size: 1.42em;
-    text-decoration: underline;
-    margin-top: .6em;
-    line-height: 1; }
-
-.s2 ol,
-.s2 menu {
+.s2 ol, .s2 menu {
   width: 28.125%;
   font-size: 1.37em;
   color: #fff;
   font-weight: 300; }
-
 .s2 ol {
   height: 100%; }
   .s2 ol li {
@@ -407,7 +395,9 @@
 .s2 figure.role2 .body {
   width: 50%;
   height: 100%;
-  background: url(../img/role2.png) no-repeat center center;
+  background-image: url(../img/role2.png), url(../img/role-bg.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center 5.5em, bottom center;
   background-size: 100% auto; }
 
 @-webkit-keyframes ani2-1 {

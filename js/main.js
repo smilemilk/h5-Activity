@@ -152,7 +152,7 @@ function appStart(){
         app.sound.click.play();
         console.log(app.poster,2)
     });
-    $(".s1 h4 a").on(app.evtClick, function(){
+    $(".s1 h4 a.wear-access").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
         if(!app.poster.sex){ myAlert('请先选择性别！'); return; }
         $(".s2 figure").attr('class', 'role'+app.poster.sex).children('p').removeAttr('style');
@@ -161,7 +161,14 @@ function appStart(){
         createItemsList(app.poster.sex);
         slideTo('.s2');
     });
-
+    $(".s1 h4 a.signUp-access").on(app.evtClick, function(){
+        slideTo('.enroll');
+        app.sound.click.play();
+    });
+    $(".s1 .lottery-access p").on(app.evtClick, function(){
+        slideTo('.lottery');
+        app.sound.click.play();
+    });
 
     /*s2*/
     app.itemScroll = new IScroll($(".s2 menu")[0], {click: true});
@@ -337,7 +344,7 @@ function appStart(){
     });
     $(".s2 footer a").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
-        if($(this).is('.btn1')){
+        if($(this).is('.back-button')){
             if($(this).text()=='返回分类'){
                 $(this).text('返回');
                 $(".s2 menu").hide();
@@ -345,7 +352,7 @@ function appStart(){
             }else{
                 slideTo('.s1', true);
             };
-        }else if($(this).is('.btn2')){
+        }else if($(this).is('.bg-button')){
             if(!$(".s3 menu ul").length){ createBgList(); }
             createRole(function(role){
                 app.poster.role = role;
@@ -462,13 +469,6 @@ function appStart(){
     });
     $(".s3>center a").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
-        app.poster.label = $(".s3>center input:eq(0)").val().trim();
-        app.poster.name = $(".s3>center input:eq(1)").val().trim();
-        if(!app.poster.label){
-            myAlert('请填写您的标签！'); return;
-        }else if(!app.poster.name){
-            myAlert('请填写您的名字！'); return;
-        };
         if($(".s3 figure .name font:eq(0)").text()!=app.poster.label || $(".s3 figure .name font:eq(1)").text()!=app.poster.name){
             app.poster.wordCheck = false;
         };
@@ -478,7 +478,6 @@ function appStart(){
     });
     $(".s3 footer h3 a").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
-        if(!app.poster.label || !app.poster.name){ myAlert('请填写您的标签和名字！'); return; }
         if(!app.poster.wordCheck){
             loadingShow();
             checkWord(app.poster.label, function(r){
@@ -535,6 +534,17 @@ function appStart(){
         app.sound.click.play();
     });
 
+    /*enroll*/
+    $(".enroll .submit-buttons .back-button").on(app.evtClick, function(){
+        slideTo('.s1', true);
+        app.sound.click.play();
+    });
+
+    /*lottery*/
+    $(".lottery .submit-buttons .back-button").on(app.evtClick, function(){
+        slideTo('.s1', true);
+        app.sound.click.play();
+    });
 
     /*app开始*/
     $(".load").addClass('no_animation').transit({opacity:0}, 400, 'linear', function(){
