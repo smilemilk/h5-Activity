@@ -43,8 +43,7 @@
         </div>
     </section>
 
-    <section class="s2" style="display: none; opacity: 0;">
-        <h3></h3>
+    <section class="s2" style="display: block; opacity: 1;">
         <figure>
             <p class="body"></p>
             <p class="item3"></p>
@@ -53,7 +52,12 @@
             <p class="item1"></p>
             <p class="item5"></p>
         </figure>
-        <footer><a class="btn1">返回</a><a class="btn2">背景选择</a></footer>
+        <footer>
+            <div class="submit-buttons small">
+                <a class="back-button" href="#"><i></i>返回首页</a>
+                <a class="bg-button" href="#"><i></i>我的奖品</a>
+            </div>
+        </footer>
         <ol>
             <li><a>发型</a></li>
             <li><a>上装</a></li>
@@ -106,7 +110,7 @@
         <center></center>
     </section>
 
-    <section class="lottery" style="display: block; opacity: 1;">
+    <section class="lottery">
         <div>
             <div class="lottery-title">
                 <i></i>
@@ -117,10 +121,45 @@
                 <div class="rotate-bg"></div>
                 <div class="lottery-star"><img src="../img/lottery-btn.png" id="lotteryBtn"></div>
             </div>
-            <div class="lottery-buttons">
+            <div class="submit-buttons">
                 <a class="back-button" href="#"><i></i>返回首页</a>
                 <a href="#">我的奖品</a>
             </div>
+        </div>
+    </section>
+
+    <section class="enroll">
+        <div>
+            <h3 class="form-title"><strong>「表」</strong>白爱能量<br/>线下活动报名</h3>
+            <div class="form-item">
+                <p>请填写您的领奖信息</p>
+                <input placeholder="请输入您的姓名">
+                <input placeholder="请输入您的手机号">
+                <blockquote>是否携带儿童？</blockquote>
+                <div class="form-item-buttons">
+                    <button>是</button>
+                    <button>否</button>
+                </div>
+                <input placeholder="儿童年龄">
+                <input placeholder="预计到场人数">
+            </div>
+            <div class="submit-buttons">
+                <a class="back-button" href="#"><i></i>返回主页</a>
+                <a href="#">提交</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="prize">
+        <div>
+            <h3 class="form-title">填写领奖信息</h3>
+            <div class="form-item">
+                <p>请填写您的领奖信息</p>
+                <input placeholder="请输入您的姓名">
+                <input placeholder="请输入您的手机号">
+                <textarea placeholder="请输入收货地址" rows="8"></textarea>
+            </div>
+            <button class="form-button">提交</button>
         </div>
     </section>
 
