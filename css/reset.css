@@ -81,21 +81,20 @@ a, input {
 .load center {
   position: absolute;
   left: 0%;
-  top: 50%;
-  width: 100%;
-  margin-top: -35%; }
+  top: 15%;
+  width: 100%; }
 
 .load figure {
-  width: 40%;
-  padding-bottom: 50%;
+  width: 33%;
+  padding-bottom: 75%;
   margin: 0 auto;
   background-image: url(../img/load1.png); }
 
 .load h6 {
-  font-size: 1.5em;
+  font-size: 1.28em;
   font-weight: 200;
   word-spacing: -2px;
-  margin-top: -8%;
+  margin-top: 8%;
   padding-left: 1.5em;
   color: #fff; }
 

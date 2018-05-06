@@ -127,8 +127,8 @@ app.sound = {};
 app.sound._mute = false;
 app.sound._loaded = false;
 app.sound.click = new Audio('./../sound/click.mp3');
-//app.sound.bg = new Audio('sound/bg.mp3');
-//app.sound.bg.loop = true;
+app.sound.bg = new Audio('./../sound/bg.mp3');
+app.sound.bg.loop = true;
 app.sound.Load = function(){
     if(app.sound._loaded){ return; }
     for(var i in app.sound){
@@ -159,8 +159,12 @@ app.loadRes = function(){
         res = [
             '../css/style.css',
             '../js/jquery.2.1.1.min.js',
+            '../js/init.js',
+            '../js/loader.js',
             '../js/jquery.transit.min.js',
             '../js/iscroll-lite.js',
+            '../js/jquery.easing.min.js',
+            '../js/jQueryRotate.2.2.js',
             '../js/main.js',
             '../img/loading.png',
             '../img/logo.png',

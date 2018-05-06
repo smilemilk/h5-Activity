@@ -13,12 +13,12 @@
 
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="../js/jquery.2.1.1.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.transit.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="../js/jQueryRotate.2.2.js"></script>
+    <!--<script type="text/javascript" src="../js/jquery.transit.min.js"></script>-->
+    <!--<script type="text/javascript" src="../js/jquery.easing.min.js"></script>-->
+    <!--<script type="text/javascript" src="../js/jQueryRotate.2.2.js"></script>-->
     <script type="text/javascript" src="../js/loader.js"></script>
     <script type="text/javascript" src="../js/init.js"></script>
-    <script type="text/javascript" src="../js/iscroll-lite.js"></script>
+    <!--<script type="text/javascript" src="../js/iscroll-lite.js"></script>-->
     <script type="text/javascript" src="../js/main.js"></script>
 </head>
 <body style="">
@@ -32,7 +32,14 @@
     <section class="s1">
         <h2><i></i></h2>
         <center>
-            <h3><a></a><a></a></h3>
+            <h3>
+                <a></a>
+                <a></a>
+            </h3>
+            <code>
+                <span>男生</span>
+                <span>女生</span>
+            </code>
             <p>选择性别即刻开始换装哦</p>
             <h4><a class="wear-access">开始换装</a></h4>
             <h4><a class="signUp-access">表白爱能量报名</a></h4>
@@ -137,7 +144,7 @@
             </div>
             <div class="submit-buttons">
                 <a class="back-button" href="#"><i></i>返回首页</a>
-                <a href="#">我的奖品</a>
+                <a class="gift-button" href="#">我的奖品</a>
             </div>
         </div>
     </section>
@@ -159,7 +166,7 @@
             </div>
             <div class="submit-buttons">
                 <a class="back-button" href="#"><i></i>返回主页</a>
-                <a href="#">提交</a>
+                <a class="submit-button" href="#">提交</a>
             </div>
         </div>
     </section>
@@ -177,6 +184,22 @@
         </div>
     </section>
 
+    <div class="model-dialog">
+        <div class="model-container">
+            <div class="gift-info" style="display: none;">
+                <h3>恭喜您，获得&#12288;<span class="gift-name">奖品名称</span></h3>
+                <div class="gift-img"></div>
+                <p>*最终奖品以实物为准</p>
+                <button>关闭</button>
+            </div>
+            <div class="lottery-none-info">
+                <i></i>
+                <h3>很遗憾，分享好友可<br/>再次获得抽奖机会    </h3>
+                <button>关闭</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
@@ -185,61 +208,3 @@
 </body>
 </html>
 
-<script>
-    $(function(){
-        var timeOut = function(){  //超时函数
-            $("#lotteryBtn").rotate({
-                angle:0,
-                duration: 10000,
-                animateTo: 2160, //这里是设置请求超时后返回的角度，所以应该还是回到最原始的位置，2160是因为我要让它转6圈，就是360*6得来的
-                callback:function(){
-                    alert('网络超时')
-                }
-            });
-        };
-        var rotateFunc = function(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
-            $('#lotteryBtn').stopRotate();
-            $("#lotteryBtn").rotate({
-                angle:0,
-                duration: 5000,
-                animateTo: angle+1440, //angle是图片上各奖项对应的角度，1440是我要让指针旋转4圈。所以最后的结束的角度就是这样子^^
-                callback:function(){
-                    alert(text)
-                }
-            });
-        };
-
-        $("#lotteryBtn").rotate({
-            bind:
-                {
-                    click: function(){
-                        var time = [0,1];
-                        time = time[Math.floor(Math.random()*time.length)];
-                        if(time==0){
-                            timeOut(); //网络超时
-                        }
-                        if(time==1){
-                            var data = [1,2,3,0]; //返回的数组
-                            data = data[Math.floor(Math.random()*data.length)];
-                            if(data==1){
-                                rotateFunc(1,157,'恭喜您抽中的一等奖')
-                            }
-                            if(data==2){
-                                rotateFunc(2,247,'恭喜您抽中的二等奖')
-                            }
-                            if(data==3){
-                                rotateFunc(3,22,'恭喜您抽中的三等奖')
-                            }
-                            if(data==0){
-                                var angle = [67,112,202,292,337];
-                                angle = angle[Math.floor(Math.random()*angle.length)]
-                                rotateFunc(0,angle,'很遗憾，这次您未抽中奖')
-                            }
-                        }
-                    }
-                }
-
-        });
-
-    })
-</script>

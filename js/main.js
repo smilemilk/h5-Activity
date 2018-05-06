@@ -464,18 +464,18 @@ function appStart(){
         $(this).addClass('curr').siblings().removeClass('curr');
         app.sound.click.play();
     });
-    // $(".s3 figure .name").on(app.evtClick, function(){
-    //     $(".s3>center").show();
-    // });
-    // $(".s3>center a").on(app.evtClick, function(){
-    //     setTimeout(function(){ app.sound.click.play(); });
-    //     if($(".s3 figure .name font:eq(0)").text()!=app.poster.label || $(".s3 figure .name font:eq(1)").text()!=app.poster.name){
-    //         app.poster.wordCheck = false;
-    //     };
-    //     $(".s3 figure .name font:eq(0)").text(app.poster.label);
-    //     $(".s3 figure .name font:eq(1)").text(app.poster.name);
-    //     $(".s3>center").hide();
-    // });
+    $(".s3 figure .name").on(app.evtClick, function(){
+        $(".s3>center").show();
+    });
+    $(".s3>center a").on(app.evtClick, function(){
+        setTimeout(function(){ app.sound.click.play(); });
+        if($(".s3 figure .name font:eq(0)").text()!=app.poster.label || $(".s3 figure .name font:eq(1)").text()!=app.poster.name){
+            app.poster.wordCheck = false;
+        };
+        $(".s3 figure .name font:eq(0)").text(app.poster.label);
+        $(".s3 figure .name font:eq(1)").text(app.poster.name);
+        $(".s3>center").hide();
+    });
     $(".s3 .submit-buttons .img-button").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
         if(!app.poster.wordCheck){
@@ -535,15 +535,113 @@ function appStart(){
     });
 
     /*enroll*/
+    $(".enroll .form-item-buttons button").on(app.evtClick, function(){
+        if($(this).is('.curr')){ return; }
+        $(this).addClass('curr').siblings('button').removeClass('curr');
+        app.poster.sex = $(this).index()==0 ? 1 : 2;
+        app.sound.click.play();
+        console.log(app.poster,2)
+    });
     $(".enroll .submit-buttons .back-button").on(app.evtClick, function(){
         slideTo('.s1', true);
         app.sound.click.play();
     });
+    $(".enroll .submit-buttons .submit-button").on(app.evtClick, function(){
+        app.sound.click.play();
+        submitSignUp();
+        loadingShow();
+    });
+    function submitSignUp(word, callback){
+        console.log('sign up');
+        $.ajax({
+            type: 'get',
+            url: 'http://case.html5case.cn/kaola/submit?text=' + word,
+            dataType: 'json',
+            error: function(){ typeof(callback)=='function' && callback(); },
+            success: function(resp) {
+                var url = 'http://cdn.h5case.com.cn/' + resp.data
+                $.ajax({
+                    type: 'get',
+                    url: url + '?ydtext',
+                    dataType: 'json',
+                    error: function(){ typeof(callback)=='function' && callback();  },
+                    success: function(resp) {
+                        if(resp.code == 200) {
+                            typeof(callback)=='function' && callback(resp.result.action);
+                            loadingHide();
+                        } else {
+                            this.error();
+                        }
+                    }
+                });
+            }
+        });
+    };
 
     /*lottery*/
+    var timeOut = function(){  //超时函数
+        $("#lotteryBtn").rotate({
+            angle:0,
+            duration: 10000,
+            animateTo: 2160, //这里是设置请求超时后返回的角度，所以应该还是回到最原始的位置，2160是因为我要让它转6圈，就是360*6得来的
+            callback:function(){
+                alert('网络超时')
+            }
+        });
+    };
+    var rotateFunc = function(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
+        $('#lotteryBtn').stopRotate();
+        $("#lotteryBtn").rotate({
+            angle:0,
+            duration: 5000,
+            animateTo: angle+1440, //angle是图片上各奖项对应的角度，1440是我要让指针旋转4圈。所以最后的结束的角度就是这样子^^
+            callback:function(){
+                alert(text)
+            }
+        });
+    };
+    $("#lotteryBtn").rotate({
+        bind:
+            {
+                click: function(){
+                    var time = [0,1];
+                    time = time[Math.floor(Math.random()*time.length)];
+                    if(time==0){
+                        timeOut(); //网络超时
+                    }
+                    if(time==1){
+                        var data = [1,2,3,0]; //返回的数组
+                        data = data[Math.floor(Math.random()*data.length)];
+                        if(data==1){
+                            rotateFunc(1,157,'恭喜您抽中的一等奖')
+                        }
+                        if(data==2){
+                            rotateFunc(2,247,'恭喜您抽中的二等奖')
+                        }
+                        if(data==3){
+                            rotateFunc(3,22,'恭喜您抽中的三等奖')
+                        }
+                        if(data==0){
+                            var angle = [67,112,202,292,337];
+                            angle = angle[Math.floor(Math.random()*angle.length)]
+                            rotateFunc(0,angle,'很遗憾，这次您未抽中奖')
+                        }
+                    }
+                }
+            }
+
+    });
     $(".lottery .submit-buttons .back-button").on(app.evtClick, function(){
         slideTo('.s1', true);
         app.sound.click.play();
+    });
+    $(".lottery .submit-buttons .gift-button").on(app.evtClick, function(){
+        $('.model-dialog').css('display', 'block');
+        app.sound.click.play();
+        $('.model-dialog button').on(app.evtClick, function() {
+            $('.model-dialog').css('display', 'none');
+            app.sound.click.play();
+        })
     });
 
     /*app开始*/
@@ -551,14 +649,13 @@ function appStart(){
         $(this).remove();
         $(".s1").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
         //调试
-        createItemsList(1)
-        createBgList();
-        app.poster.role = window.imgCache['role1.png'];
-        $(".s3").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
-        setTimeout(function(){ app.itemScroll.refresh(); app.bgScroll.refresh(); }, 300);
+        // createItemsList(1)
+        // createBgList();
+        // app.poster.role = window.imgCache['role1.png'];
+        // $(".s3").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
+        // setTimeout(function(){ app.itemScroll.refresh(); app.bgScroll.refresh(); }, 300);
 
     });
-    app.sound.bg.play();
-    $(window).one(app.evtUp, function(){ app.sound.bg.play();  });
-
+    // app.sound.bg.play();
+    // $(window).one(app.evtUp, function(){ app.sound.bg.play();  });
 };
