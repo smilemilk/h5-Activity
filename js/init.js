@@ -18,7 +18,7 @@ app.poster = {
     img2: undefined,
     role: undefined,
     sex: 0,
-    name: '',
+    // name: '',
     label: '',
     wordCheck: false,
     bg: 20,

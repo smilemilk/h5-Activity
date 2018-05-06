@@ -138,7 +138,7 @@ function appStart(){
             html+='<ul>';
             arr = app.poster.items[i-1][sex-1];
             $.each(arr, function() {
-                html+='<li style="background-image: url(img/item'+i+'/i'+i+'-'+this+'s.png);" data-img="i'+i+'-'+this+'.png"></li>';
+                html+='<li style="background-image: url(../img/item'+i+'/i'+i+'-'+this+'s.png);" data-img="i'+i+'-'+this+'.png"></li>';
             });
             html+='</ul>';
         };
@@ -221,7 +221,7 @@ function appStart(){
             return;
         }
         var imgName = $(this).attr('data-img');
-        var imgUrl = 'img/item'+type+'/'+imgName;
+        var imgUrl = '../img/item'+type+'/'+imgName;
         var imgID = imgName.replace('.png', '').split('-')[1];
         var action = function(){
             var about, temp, p = $(".s2 figure .item"+type);
@@ -374,7 +374,7 @@ function appStart(){
         var html='';
         html+='<ul>';
         for(var i=1; i<=app.poster.bg; i++){
-            html+='<li style="background-image: url(img/bg/bg-'+i+'s.png);" data-img="bg-'+i+'.png"></li>';
+            html+='<li style="background-image: url(../img/bg/bg-'+i+'s.png);" data-img="bg-'+i+'.png"></li>';
         };
         html+='</ul>';
         $(".s3 menu>div").html(html);
@@ -453,39 +453,39 @@ function appStart(){
             }
         });
     };
-    $(".s3 header a").on(app.evtClick, function(){
+    $(".s3 .submit-buttons .back-button").on(app.evtClick, function(){
         slideTo('.s2', true);
         app.sound.click.play();
     });
     $(".s3 menu").on('click', 'li', function(){
         if($(this).is('.curr')){ return; }
         var imgName = $(this).attr('data-img');
-        $(".s3 figure .bg").css('background-image', 'url(img/bg/'+$(this).attr('data-img')+')');
+        $(".s3 figure .bg").css('background-image', 'url(../img/bg/'+$(this).attr('data-img')+')');
         $(this).addClass('curr').siblings().removeClass('curr');
         app.sound.click.play();
     });
-    $(".s3 figure .name").on(app.evtClick, function(){
-        $(".s3>center").show();
-    });
-    $(".s3>center a").on(app.evtClick, function(){
-        setTimeout(function(){ app.sound.click.play(); });
-        if($(".s3 figure .name font:eq(0)").text()!=app.poster.label || $(".s3 figure .name font:eq(1)").text()!=app.poster.name){
-            app.poster.wordCheck = false;
-        };
-        $(".s3 figure .name font:eq(0)").text(app.poster.label);
-        $(".s3 figure .name font:eq(1)").text(app.poster.name);
-        $(".s3>center").hide();
-    });
-    $(".s3 footer h3 a").on(app.evtClick, function(){
+    // $(".s3 figure .name").on(app.evtClick, function(){
+    //     $(".s3>center").show();
+    // });
+    // $(".s3>center a").on(app.evtClick, function(){
+    //     setTimeout(function(){ app.sound.click.play(); });
+    //     if($(".s3 figure .name font:eq(0)").text()!=app.poster.label || $(".s3 figure .name font:eq(1)").text()!=app.poster.name){
+    //         app.poster.wordCheck = false;
+    //     };
+    //     $(".s3 figure .name font:eq(0)").text(app.poster.label);
+    //     $(".s3 figure .name font:eq(1)").text(app.poster.name);
+    //     $(".s3>center").hide();
+    // });
+    $(".s3 .submit-buttons .img-button").on(app.evtClick, function(){
         setTimeout(function(){ app.sound.click.play(); });
         if(!app.poster.wordCheck){
             loadingShow();
             checkWord(app.poster.label, function(r){
-                if(!r){ loadingHide(); myAlert('输入内容检查错误，请重试！'); return; }
-                if(r!=1){ loadingHide(); myAlert('您输入的标签违规，请重新输入！'); return; }
+                // if(!r){ loadingHide(); myAlert('输入内容检查错误，请重试！'); return; }
+                // if(r!=1){ loadingHide(); myAlert('您输入的标签违规，请重新输入！'); return; }
                 checkWord(app.poster.name, function(r){
-                    if(!r){ loadingHide(); myAlert('输入内容检查错误，请重试！'); return; }
-                    if(r!=1){ loadingHide(); myAlert('您输入的名字违规，请重新输入！'); return; }
+                    // if(!r){ loadingHide(); myAlert('输入内容检查错误，请重试！'); return; }
+                    // if(r!=1){ loadingHide(); myAlert('您输入的名字违规，请重新输入！'); return; }
                     app.poster.wordCheck = true;
                     createPoster(function(poster, poster2){
                         app.poster.img1 = poster;
@@ -551,14 +551,14 @@ function appStart(){
         $(this).remove();
         $(".s1").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
         //调试
-        //createItemsList(1)
-        //createBgList();
-        //app.poster.role = window.imgCache['role1.png'];
-        //$(".s3").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
-        //setTimeout(function(){ app.itemScroll.refresh(); app.bgScroll.refresh(); }, 300);
+        createItemsList(1)
+        createBgList();
+        app.poster.role = window.imgCache['role1.png'];
+        $(".s3").css({display:'block', opacity:0}).transit({opacity:1}, 400, 'linear');
+        setTimeout(function(){ app.itemScroll.refresh(); app.bgScroll.refresh(); }, 300);
 
     });
-    //app.sound.bg.play();
-    //$(window).one(app.evtUp, function(){ app.sound.bg.play();  });
+    app.sound.bg.play();
+    $(window).one(app.evtUp, function(){ app.sound.bg.play();  });
 
 };
