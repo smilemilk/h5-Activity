@@ -719,10 +719,16 @@ a, input {
   z-index: 20; }
 
 .s2 figure p:nth-child(4) {
-  z-index: 30; }
+  z-index: 30;
+  background-size: 11em 12.4em;
+  top: 13.4em;
+  left: 5em; }
 
 .s2 figure p:nth-child(5) {
-  z-index: 40; }
+  z-index: 40;
+  background-size: 6em 7.4em;
+  top: 4.2em;
+  left: 6.5em; }
 
 .s2 figure p:nth-child(6) {
   z-index: 50; }

@@ -539,8 +539,6 @@ function appStart(){
         if($(this).is('.curr')){ return; }
         $(this).addClass('curr').siblings('button').removeClass('curr');
         carryChildren = $(this).index()==0 ? 1 : 0;
-        console.log('9999999')
-        console.log(carryChildren)
         if (carryChildren == 1) {
             $(".enroll .form-item .form-item-age").removeClass('hidden');
         } else {
@@ -586,12 +584,20 @@ function appStart(){
                             return;
                         }
                     });
+                } else {
+                    submitSignUp(turnoutNum, function(e) {
+                        if(!e)
+                        { loadingHide();
+                            myAlert('请输入到场人数');
+                            return;
+                        }
+                    });
                 }
             }
         });
 
     });
-    function submitSignUp(word, callback){
+    function submitSignUp(callback){
         name = '';
         phone = '';
         carryChildren = null;
@@ -600,7 +606,14 @@ function appStart(){
         loadingShow();
         $.ajax({
             type: 'get',
-            url: 'http://case.html5case.cn/kaola/submit?text=' + word,
+            url: 'http://192.168.1.104:80/dressing/signUp',
+            data: {
+                name: name,
+                phone: phone,
+                carryChildren: carryChildren,
+                childrenAge: childrenAge,
+                turnoutNum: turnoutNum
+            },
             dataType: 'json',
             error: function(){ typeof(callback)=='function' && callback(); },
             success: function(resp) {
