@@ -310,6 +310,9 @@ a, input {
     height: 100%; } }
 @font-face {
   font-family: mvm; }
+.hidden {
+  display: none !important; }
+
 /*loading*/
 .loading {
   -webkit-animation: ani-loading1 0.2s 0.05s linear both;
@@ -512,7 +515,7 @@ a, input {
     margin: 2em auto 8%;
     background-image: url(../img/s1-title.png); }
   .s1 center {
-    top: 25%;
+    top: 23%;
     margin-top: 0; }
     .s1 center h3 a {
       display: inline-block;
@@ -579,7 +582,7 @@ a, input {
             background: url("../img/signUp-icon.png") no-repeat center center;
             background-size: 100% auto; }
   .s1 .lottery-access {
-    top: 80%;
+    top: 85%;
     text-align: center; }
     .s1 .lottery-access i {
       display: inline-block;

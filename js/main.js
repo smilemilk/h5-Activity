@@ -129,7 +129,6 @@ function appStart(){
     };
 
 
-
     /*s1*/
     function createItemsList(sex){
         if(sex!=1 && sex!=2){ sex=1; }
@@ -535,24 +534,70 @@ function appStart(){
     });
 
     /*enroll*/
+
     $(".enroll .form-item-buttons button").on(app.evtClick, function(){
         if($(this).is('.curr')){ return; }
         $(this).addClass('curr').siblings('button').removeClass('curr');
-        app.poster.sex = $(this).index()==0 ? 1 : 2;
+        carryChildren = $(this).index()==0 ? 1 : 0;
+        console.log('9999999')
+        console.log(carryChildren)
+        if (carryChildren == 1) {
+            $(".enroll .form-item .form-item-age").removeClass('hidden');
+        } else {
+            if ($(".enroll .form-item .form-item-age").hasClass('hidden')) {
+                return;
+            } else {
+                $(".enroll .form-item .form-item-age").addClass('hidden');
+            }
+        }
+        $(".enroll .form-item .form-item-phone")
         app.sound.click.play();
-        console.log(app.poster,2)
+
     });
     $(".enroll .submit-buttons .back-button").on(app.evtClick, function(){
         slideTo('.s1', true);
         app.sound.click.play();
     });
+    $(".enroll .form-item .form-item-name").on("input", function(e) {
+        name = e.delegateTarget.value;
+    });
+    $(".enroll .form-item .form-item-phone").on("input", function(e) {
+        phone = e.delegateTarget.value;
+    });
     $(".enroll .submit-buttons .submit-button").on(app.evtClick, function(){
         app.sound.click.play();
-        submitSignUp();
-        loadingShow();
+        submitSignUp(name, function(e) {
+            if(!e){
+                loadingHide(); myAlert('请输入姓名');
+                return;
+            } else {
+                submitSignUp(phone, function(e) {
+                    if(!e)
+                    { loadingHide();
+                        myAlert('请输入手机号');
+                        return;
+                    }
+                });
+                if (carryChildren == 1) {
+                    submitSignUp(childrenAge, function(e) {
+                        if(!e)
+                        { loadingHide();
+                            myAlert('请输入儿童年龄');
+                            return;
+                        }
+                    });
+                }
+            }
+        });
+
     });
     function submitSignUp(word, callback){
-        console.log('sign up');
+        name = '';
+        phone = '';
+        carryChildren = null;
+        childrenAge = '';
+        turnoutNum = '';
+        loadingShow();
         $.ajax({
             type: 'get',
             url: 'http://case.html5case.cn/kaola/submit?text=' + word,

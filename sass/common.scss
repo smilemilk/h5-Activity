@@ -1,4 +1,7 @@
 @font-face { font-family: mvm;}
+.hidden {
+    display: none !important;
+}
 
 /*loading*/
 .loading {
@@ -102,7 +105,7 @@
         }
     }
     center {
-        top: 25%;
+        top: 23%;
         margin-top: 0;
         h3 {
             a {
@@ -185,7 +188,7 @@
         }
     }
     .lottery-access {
-        top: 80%;
+        top: 85%;
         text-align: center;
         i {
             display: inline-block;
